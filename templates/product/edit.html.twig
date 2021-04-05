@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Edition de {{ product.name }}
+{% endblock %}
+
+{% block body %}
+    <h1>Editer un produit {{ product.name }}</h1>
+
+    {{ form_start(form) }}
+    
+    {{ form_errors(form) }}
+    
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+        {{ form_row(form.name) }}
+        {{ form_row(form.price) }}
+        </div>
+    </div>
+    <div class="col">
+    {{
+        form_row(form.mainPicture)
+    }}
+    {{ form_row(form.category) }}
+    {{ form_row(form.shortDescription) }}
+    </div>
+</div>
+    
+
+    <button type="submit" class="btn btn-primary mt-3">
+        <i class="fas fa-save"></i>
+        Créer un produit
+    </button>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

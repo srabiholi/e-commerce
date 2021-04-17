@@ -9,8 +9,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CategoryController extends AbstractController
 {
@@ -24,7 +26,7 @@ class CategoryController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response
     {
-
+        
         $category = new Category;
 
         $form = $this->createForm(CategoryType::class, $category);
@@ -51,8 +53,15 @@ class CategoryController extends AbstractController
      */
     public function edit($id, CategoryRepository $categoryRepository, Request $request, EntityManagerInterface $em, SluggerInterface $slugger)
     {
+        // $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'vous n\'avez pas le droit d\'acceder cette ressource');
 
         $category = $categoryRepository->find($id);
+
+        if(!$category){
+            throw new NotFoundHttpException("Cette category n'existe pas"); 
+        }
+
+        // $this->denyAccessUnlessGranted('CAN_EDIT', $category, "Vous n'etes pas proprietaire de cette categorie");
 
         $form = $this->createForm(CategoryType::class, $category);
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f1276ca1a7e976922dfcf86b0a05a64",
+    "content-hash": "66dcc57510e1e3c7aefc677da5e091ad",
     "packages": [
         {
             "name": "bluemmb/faker-picsum-photos-provider",
@@ -2573,6 +2573,136 @@
                 "source": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/tree/v6.1.2"
             },
             "time": "2021-04-09T16:14:11+00:00"
+        },
+        {
+            "name": "stripe/stripe-php",
+            "version": "v7.77.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "f6724447481f6fb8c2e714165e092adad9ca470a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/f6724447481f6fb8c2e714165e092adad9ca470a",
+                "reference": "f6724447481f6fb8c2e714165e092adad9ca470a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "2.17.1",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "^3.3",
+                "symfony/process": "~3.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stripe\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "support": {
+                "issues": "https://github.com/stripe/stripe-php/issues",
+                "source": "https://github.com/stripe/stripe-php/tree/v7.77.0"
+            },
+            "time": "2021-04-12T17:19:16+00:00"
+        },
+        {
+            "name": "symfony/asset",
+            "version": "v5.1.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/asset.git",
+                "reference": "54a42aa50f9359d1184bf7e954521b45ca3d5828"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/asset/zipball/54a42aa50f9359d1184bf7e954521b45ca3d5828",
+                "reference": "54a42aa50f9359d1184bf7e954521b45ca3d5828",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "symfony/http-client": "^4.4|^5.0",
+                "symfony/http-foundation": "^4.4|^5.0",
+                "symfony/http-kernel": "^4.4|^5.0"
+            },
+            "suggest": {
+                "symfony/http-foundation": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Asset\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Manages URL generation and versioning of web assets such as CSS stylesheets, JavaScript files and image files",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/asset/tree/v5.1.11"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-01-27T10:01:46+00:00"
         },
         {
             "name": "symfony/cache",

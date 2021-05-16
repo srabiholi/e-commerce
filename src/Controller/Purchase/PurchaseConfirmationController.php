@@ -7,6 +7,7 @@ use App\Entity\Purchase;
 use App\Cart\CartService;
 use App\Entity\PurchaseItem;
 use App\Form\CartConfirmationType;
+use App\Purchase\PurchasePersister;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,10 +18,12 @@ class PurchaseConfirmationController extends AbstractController
 {
 
     protected $cartService;
+    protected $persister;
 
-    public function __construct(CartService $cartService)
+    public function __construct(CartService $cartService, PurchasePersister $persister)
     {
         $this->cartService = $cartService;
+        $this->persister = $persister;
     }
 
     /**
@@ -50,35 +53,12 @@ class PurchaseConfirmationController extends AbstractController
         /**@var Purchase */
         $purchase = $form->getData();
 
-        dump($user);
-        dump($purchase);
-        $purchase->setUser($user)
-                ->setPurchasedAt(new DateTime())
-                ->setTotal($this->cartService->getTotal());
+        $this->persister->storePurchase($purchase);
 
-        
-        $em->persist($purchase);
-
-        foreach($this->cartService->getDetailCartItems() as $cartItem){
-            $purchaseItem = new PurchaseItem;
-            $purchaseItem->setPurchase($purchase)
-                    ->setProduct($cartItem->product)
-                    ->setProductName($cartItem->product->getName())
-                    ->setQuantity($cartItem->qty)
-                    ->setTotal($cartItem->getTotal())
-                    ->setProductPrice($cartItem->product->getPrice());
-
-
-        $em->persist($purchaseItem);
-        }
-
-
-        $em->flush();
-
-        $this->cartService->empty();
-
-        $this->addFlash('success', "La commande a bien été enregistré");
-        return $this->redirectToRoute('purchase_index');
+        dd($purchase);
+        return $this->redirectToRoute('purchase_payment_form', [
+            'id' => $purchase->getId(),
+        ]);
 
 
     }

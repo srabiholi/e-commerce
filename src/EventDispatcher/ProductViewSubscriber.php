@@ -28,10 +28,10 @@ class ProductViewSubscriber implements EventSubscriberInterface
         ];
     }
 
-    // public function sendLog(ProductViewEvent $productViewEvent)
-    // {
-    //     $this->logger->info('Produit n°'. $productViewEvent->getProduct()->getId());
-    // }
+    public function sendLog(ProductViewEvent $productViewEvent)
+    {
+        $this->logger->info('Produit n°'. $productViewEvent->getProduct()->getId());
+    }
 
     // public function sendLog(ProductViewEvent $productViewEvent)
     // {
